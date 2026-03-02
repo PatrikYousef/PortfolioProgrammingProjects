@@ -29,7 +29,7 @@ def PasswordSystem():
     
     return newpassword
 
-##def AddLogin(LoginInfo):
+#def AddLogin(LoginInfo):
     name = input("Name: ")
     lastname = input("LastName: ")
     username = input("Username: ")
