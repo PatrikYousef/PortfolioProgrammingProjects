@@ -68,40 +68,41 @@ def CitySystem():
     print(f"Hourly weather data for {selected_city.namn}")
 
  
-    average_temp = numpy.mean(temperatures)
     median_temp = numpy.median(temperatures)
+    humidity_median=numpy.median(humidity)
+    wind_median = numpy.median(wind)
+    precipitation_median=numpy.median(precipitation)
+
+
     mode_result = stats.mode(temperatures, keepdims=True)
     most_common_temp = float(mode_result.mode[0])
 
     average_humidity = numpy.mean(humidity)
     average_wind = numpy.mean(wind)
-    total_rain = numpy.sum(precipitation)
+    average_temp = numpy.mean(temperatures)
+    
+    plt.plot(temperatures, marker="o", markersize=4, color="#e41a1c", label="Temperature °C")  # röd
+    plt.plot(humidity, marker="o", markersize=4, color="#377eb8", label="Humidity %")         # blå
+    plt.plot(wind, marker="o", markersize=4, color="#4daf4a", label="Wind speed m/s")          # grön
+    plt.plot(precipitation, marker="o", markersize=4, color="#ff7f00", label="Precipitation mm")  # orange
 
-    print(f"Average temperature: {average_temp:.1f} °C")
-    print(f"Median temperature: {median_temp:.1f} °C")
-    print(f"Most frequent temperature: {most_common_temp:.1f} °C")
+# Horisontella linjer (matchande färger med linjer)
+    plt.axhline(y=average_temp, color="#e41a1c", linestyle="--", label=f"Average Temp: {average_temp:.1f} °C")
+    plt.axhline(y=median_temp, color="#e41a1c", linestyle=":", label=f"Median Temp: {median_temp:.1f} °C")
+    plt.axhline(y=most_common_temp, color="#e41a1c", linestyle="-.", label=f"Most Frequent Temp: {most_common_temp:.1f} °C")
 
-    print(f"Average humidity: {average_humidity:.1f} %")
-    print(f"Average wind speed: {average_wind:.1f} m/s")
-    print(f"Total precipitation: {total_rain:.1f} mm")
+    plt.axhline(y=average_humidity, color="#377eb8", linestyle="--", label=f"Average Humidity: {average_humidity:.1f} %")
+    plt.axhline(y=humidity_median, color="#377eb8", linestyle=":", label=f"Median Humidity: {humidity_median:.1f} %")
 
+    plt.axhline(y=average_wind, color="#4daf4a", linestyle="--", label=f"Average Wind: {average_wind:.1f} m/s")
+    plt.axhline(y=wind_median, color="#4daf4a", linestyle=":", label=f"Median Wind: {wind_median:.1f} m/s")
 
-    plt.plot(temperatures, marker="o", markersize=4, color="blue", label="Temperature °C")
-    plt.plot(humidity, marker="o", markersize=4, color="black", label="Humidity %")
-    plt.plot(wind, marker="o", markersize=4, color="orange", label="Wind speed m/s")
-    plt.plot(precipitation, marker="o", markersize=4, color="green", label="Precipitation mm")
-
-
-    plt.axhline(y=average_temp, color="red", label=f"Average temp: {average_temp:.1f} °C")
-    plt.axhline(y=median_temp, color="purple", label=f"Median temp: {median_temp:.1f} °C")
-    plt.axhline(y=most_common_temp, color="cyan", label=f"Most frequent temp: {most_common_temp:.1f} °C")
-
+    plt.axhline(y=precipitation_median, color="#ff7f00", linestyle="--", label=f"Median Precipitation: {precipitation_median:.1f} mm")
     plt.xlabel("Time (hours)")
     plt.ylabel("Weather values")
     plt.title(f"Hourly weather data for {selected_city.namn}")
     plt.grid()
     plt.legend()
-
     plt.show()
 
 
