@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System och projekt för företag</title>
+  <meta name="description" content="Jag bygger system åt företag och säljer egna färdiga projekt. API, databaser, server- och klientlösningar.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+    <style>
+    :root{
+      --bg:#0a0a0a;
+      --bg2:#0f0f0f;
+      --card:#121212;
+      --text:#f6f6f6;
+      --muted:#bdbdbd;
+      --line:rgba(255,255,255,.10);
+      --line2:rgba(255,255,255,.16);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; background-color:black;}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 20% 10%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(700px 480px at 85% 30%, rgba(255,255,255,.05), transparent 55%),
+        linear-gradient(180deg, var(--bg), #050505);
+      letter-spacing:.1px;
+    }
+    a{color:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .nav{
+      position:sticky; top:0; z-index:20;
+      background:rgba(10,10,10,.72);
+      border-bottom:1px solid var(--line);
+      backdrop-filter: blur(12px) saturate(140%);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none;
+      font-weight:800;
+      letter-spacing:.4px;
+    }
+    .mark{
+      width:34px; height:34px; border-radius:12px;
+      border:1px solid var(--line2);
+      background:
+        radial-gradient(10px 10px at 30% 30%, rgba(255,255,255,.35), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+      box-shadow: 0 14px 36px rgba(0,0,0,.4);
+    }
+    .links{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+    .links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:700;
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:12px;
+    }
+    .links a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border-radius:14px;
+      padding:12px 14px;
+      font-weight:900;
+      font-size:14px;
+      text-decoration:none;
+      border:1px solid var(--line2);
+      background:rgba(255,255,255,.06);
+      transition: transform .05s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover{background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.22)}
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.74));
+      color:#0a0a0a;
+      border:0;
+      box-shadow: 0 18px 46px rgba(0,0,0,.55);
+    }
+
+    .hero{padding:72px 0 40px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+      padding:8px 12px;
+      font-weight:900;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .dot{width:8px; height:8px; border-radius:99px; background:rgba(255,255,255,.75)}
+    h1{
+      margin:14px 0 12px;
+      font-size: clamp(34px, 4.6vw, 56px);
+      line-height:1.02;
+      letter-spacing:-.7px;
+    }
+    .lead{
+      margin:0;
+      color:var(--muted);
+      font-size: clamp(16px, 1.55vw, 18px);
+      line-height:1.65;
+      max-width: 62ch;
+    }
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+
+    .panel{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .panel h3{margin:10px 0 8px; font-size:15px; letter-spacing:.2px}
+    .panel p{margin:0; color:var(--muted); line-height:1.6; font-size:14px}
+    .mini-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:12px;
+    }
+    .mini{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 16px;
+      padding:12px;
+    }
+    .mini b{display:block; font-size:16px}
+    .mini span{color:var(--muted); font-weight:700; font-size:12px}
+
+    .section{padding:46px 0}
+    .section h2{
+      margin:0 0 10px;
+      font-size:26px;
+      letter-spacing:-.2px;
+    }
+    .section p{margin:0; color:var(--muted); line-height:1.7}
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:16px;
+    }
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .card h3{margin:10px 0 8px; font-size:16px}
+    .tag{
+      display:inline-flex; align-items:center;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding:7px 10px;
+      border-radius: 999px;
+      color:var(--muted);
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.2px;
+    }
+    .kpi{
+      display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .kpi b{font-size:22px}
+    .kpi span{color:var(--muted); font-weight:800; font-size:12px}
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+      margin-top:16px;
+    }
+    .stepnum{
+      width:34px; height:34px; border-radius:14px;
+      display:grid; place-items:center;
+      border:1px solid var(--line2);
+      background: rgba(255,255,255,.06);
+      font-weight:1000;
+    }
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .form-row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    label{display:block; color:var(--muted); font-weight:900; font-size:12px; margin:0 0 6px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus{border-color: rgba(255,255,255,.28)}
+    .small{font-size:12px; color:var(--muted); line-height:1.5}
+
+    footer{
+      padding:34px 0 50px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center;
+    }
+    .foot a{color:var(--muted); text-decoration:none}
+    .foot a:hover{color:var(--text)}
+
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr}
+      .grid3{grid-template-columns: 1fr}
+      .steps{grid-template-columns: 1fr 1fr}
+      .two{grid-template-columns: 1fr}
+      .form-row{grid-template-columns: 1fr}
+    }
+</style>
+
+<body>
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Start">
+          <span class="mark" aria-hidden="true"></span>
+          <span>Systemutvecklaren Patrik</span>
+        </a>
+
+        <nav class="links" aria-label="Meny">
+          <a href="#erbjudande">Erbjudande</a>
+          <a href="#produkter">Produkter</a>
+          <a href="#process">Process</a>
+          <a href="#kontakt">Kontakt</a>
+          <a class="btn primary" href="#kontakt">Boka möte</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+<main>
+
+<section class="hero">
+<div class="container">
+
+<div class="hero-grid">
+
+<div>
+
+<h1>Jag bygger system åt företag och säljer egna färdiga projekt.</h1>
+
+<p class="lead">
+Jag utvecklar system och digitala projekt för företag. 
+Ni kan anlita mig för att bygga ett nytt system från grunden eller köpa ett av mina färdiga projekt.
+
+Alla projekt levereras till fast pris. 
+Ni vet kostnaden innan projektet startar.
+
+Företag kan köpa färdiga system, beställa nya projekt eller få lösningar anpassade efter sin verksamhet.
+</p>
+
+<div class="actions">
+<a class="btn primary" href="#kontakt">Få offert</a>
+<a class="btn" href="#produkter">Se projekt</a>
+</div>
+
+</div>
+
+<aside class="panel">
+
+<h3>Vad du får</h3>
+
+<ul>
+<li>Fast pris på alla projekt</li>
+<li>System utvecklade för företag</li>
+<li>Möjlighet att köpa färdiga lösningar</li>
+<li>Direktkontakt med utvecklaren</li>
+</ul>
+
+</aside>
+
+</div>
+</div>
+</section>
+
+<section id="erbjudande" class="section">
+
+<div class="container">
+
+<h2>Erbjudande</h2>
+
+<p>
+Jag utvecklar system och projekt för företag. 
+Ni kan köpa färdiga lösningar eller beställa nya system utvecklade efter era behov.
+Alla projekt offereras med fast pris.
+</p>
+
+<div class="grid3">
+
+<div class="card">
+
+<span class="tag">Färdiga projekt</span>
+
+<h3>Köp färdiga system</h3>
+
+<p>
+Jag utvecklar egna digitala projekt och system som företag kan köpa direkt och börja använda.
+</p>
+
+</div>
+
+<div class="card">
+
+<span class="tag">Systemutveckling</span>
+
+<h3>Projekt utvecklade för ert företag</h3>
+
+<p>
+Jag bygger nya system åt företag baserat på deras behov. 
+Det kan vara interna verktyg, automation eller adminsystem.
+</p>
+
+</div>
+
+<div class="card">
+
+<span class="tag">Anpassning</span>
+
+<h3>Anpassning av projekt</h3>
+
+<p>
+Befintliga projekt kan anpassas efter ert företag och integreras i era system.
+</p>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="produkter" class="section">
+
+<div class="container">
+
+<h2>Exempel på projekt</h2>
+
+<p>
+Exempel på system jag utvecklar för företag.
+</p>
+
+<div class="grid3">
+
+<div class="card">
+<h3>API & integrationer</h3>
+<p>Kopplar ihop tjänster, skapar API:er, analyserar data och ta in fakta från api.</p>
+</div>
+
+<div class="card">
+<h3>Kurvor och analys</h3>
+<p>kan även koda kurvor och analys för att se exempelvis hur bra förtaget säljer</p>
+</div>
+
+<div class="card">
+<h3>Server & klientlösningar</h3>
+<p>Utvecklar både serverapplikationer och klientapplikationer för olika plattformar.</p>
+</div>
+
+<div class="card">
+<h3>Vanliga roliga system</h3>
+<p>Kan även skapa vanliga system som exempelvis bibliotekSystem och andra typer av system</p>
+</div>
+
+<div class="card">
+<h3>Databaser</h3>
+<p>sparar all data i en databas</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="process" class="section">
+
+<div class="container">
+
+<h2>Så går ett projekt till</h2>
+
+<p>
+Alla projekt startar med en behovsanalys och levereras till fast pris.
+</p>
+
+<div class="steps">
+
+<div class="card">
+<div class="stepnum">1</div>
+<h3>Behov</h3>
+<p>Vi går igenom företagets behov.</p>
+</div>
+
+<div class="card">
+<div class="stepnum">2</div>
+<h3>Offert</h3>
+<p>Ni får ett fast pris på projektet.</p>
+</div>
+
+<div class="card">
+<div class="stepnum">3</div>
+<h3>Utveckling</h3>
+<p>Systemet byggs och testas.</p>
+</div>
+
+<div class="card">
+<div class="stepnum">4</div>
+<h3>Leverans</h3>
+<p>Projektet levereras och kan tas i drift.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="kontakt" class="section">
+
+<div class="container">
+
+<h2>Kontakt</h2>
+
+<p>
+Beskriv kort vilket system eller projekt ni vill bygga. 
+Jag återkommer med förslag och ett fast pris.
+</p>
+
+<div class="card">
+
+<p>
+E-post: yousefpatrik@gmail.com<br>
+Ort: Stockholm
+</p>
+</div>
+
+</div>
+</section>
+
+<footer>
+
+<div class="container">
+
+<p>
+© 2026 Systemutvecklaren Patrik
+</p>
+
+</div>
+
+</footer>
+
+</main>
+
+</body>
+</html>
