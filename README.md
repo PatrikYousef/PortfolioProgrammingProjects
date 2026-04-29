@@ -1,136 +1,115 @@
-# AboutMyCodingWebsite
+# Growth Model
 
-# Link
-https://systemutvecklarenpatrik.se
-# English
-# Systems and Projects for Businesses
+A Python program that visualizes height development over time using a growth curve model.
 
-I build systems for businesses and sell ready-made digital projects. This site presents services, projects, process, and contact information.
+## Overview
 
----
+This project lets you:
 
-## Description
+* Input your height and age
+* Input your parents' heights
+* Estimate your final height
+* Visualize your growth against standard curves
+* Track changes over time
 
-I develop systems and digital projects for businesses. You can hire me to build a new system from scratch or purchase a ready-made project. All projects are delivered at a fixed price, so you know the cost before the project starts.
-
----
-
-## What You Get
-
-- Fixed price for all projects  
-- Systems developed for businesses  
-- Option to buy ready-made solutions  
-- Direct contact with the developer  
+The model uses cubic spline interpolation to generate smooth growth curves.
 
 ---
 
-## Services
+## Features
 
-### Ready-made Projects
-- Purchase ready-to-use systems immediately.
-
-### Custom Development
-- Build new systems based on your business needs.  
-- Can include internal tools, automation, and admin systems.
-
-### Adaptation
-- Existing projects can be adapted and integrated into your systems.
+* Personal height tracking
+* Parent-based height prediction
+* Growth difference calculation
+* Standard growth curve comparison
+* Visual graph using matplotlib
+* Multiple data points over time
 
 ---
 
-## Example Projects
+## How It Works
 
-- **APIs & Integrations:** Connect services, create APIs, and analyze data.  
-- **Charts & Analysis:** Visualize and analyze company performance.  
-- **Server & Client Solutions:** Develop server and client applications.  
-- **Standard Systems:** Create library systems and other common solutions.  
-- **Databases:** Store all data in a structured database.
+### Input
 
----
+You provide:
 
-## Process
+* Your current height
+* Your age
+* Your mother's height
+* Your father's height
 
-1. **Needs:** Review your company’s requirements.  
-2. **Quote:** Receive a fixed price for the project.  
-3. **Development:** The system is built and tested.  
-4. **Delivery:** The project is delivered and ready to use.
+### Prediction
 
----
+The program estimates final height using:
 
-## Contact
+```
+(mother + father + 13) / 2
+```
 
-Briefly describe the system or project you want to build. I will provide proposals and a fixed price.
+This formula applies to boys.
 
-- Email: yousefpatrik@gmail.com  
-- Location: Stockholm
+### Growth Curves
 
----
-
-© 2026 System Developer Patrik
-
-
-# Swedish
-# System och projekt för företag
-
-Jag bygger system åt företag och säljer egna färdiga projekt. Webbsidan presenterar erbjudanden, projekt, process och kontaktinformation.
+* A reference curve is defined for a 180 cm individual
+* The curve is scaled to create multiple height trajectories
+* Your data is plotted against these curves
 
 ---
 
-## Beskrivning
+## Requirements
 
-Jag utvecklar system och digitala projekt för företag. Ni kan anlita mig för att bygga ett nytt system från grunden eller köpa ett färdigt projekt. Alla projekt levereras till fast pris, så ni vet kostnaden innan projektet startar.
+Install dependencies:
 
----
-
-## Vad du får
-
-- Fast pris på alla projekt
-- System utvecklade för företag
-- Möjlighet att köpa färdiga lösningar
-- Direktkontakt med utvecklaren
+```
+pip install matplotlib numpy scipy
+```
 
 ---
 
-## Erbjudande
+## How to Run
 
-### Färdiga projekt
-- Köp färdiga system som kan tas i bruk direkt.
+Run the program:
 
-### Systemutveckling
-- Bygg nya system baserat på företagets behov.
-- Kan inkludera interna verktyg, automation och adminsystem.
-
-### Anpassning
-- Befintliga projekt kan anpassas och integreras med era system.
+```
+python3 your_file_name.py
+```
 
 ---
 
-## Exempel på projekt
+## Output
 
-- **API & integrationer:** Koppla ihop tjänster, skapa API:er och analysera data.  
-- **Kurvor och analys:** Visualisera och analysera företagsdata.  
-- **Server & klientlösningar:** Utveckla server- och klientapplikationer.  
-- **Vanliga system:** Skapa bibliotekssystem och andra standardlösningar.  
-- **Databaser:** Lagra all data på ett strukturerat sätt.
+The program displays:
 
----
+* Your growth over time
+* Your parents' heights
+* Predicted final height
+* Standard growth curves
+* Growth phases:
 
-## Process
-
-1. **Behov:** Gå igenom företagets behov.  
-2. **Offert:** Ni får ett fast pris på projektet.  
-3. **Utveckling:** Systemet byggs och testas.  
-4. **Leverans:** Projektet levereras och tas i drift.
+  * Rapid growth (age 11 to 15)
+  * Slowing growth (age 15 to 18)
 
 ---
 
-## Kontakt
+## Limitations
 
-Beskriv kort vilket system eller projekt ni vill bygga. Jag återkommer med förslag och fast pris.
-
-- E-post: yousefpatrik@gmail.com  
-- Ort: Stockholm
+* The prediction formula is simplified
+* Only accurate for general estimates
+* Does not account for genetics beyond parents
+* Assumes standard growth patterns
 
 ---
 
-© 2026 Systemutvecklaren Patrik
+## Future Improvements
+
+* Add support for girls
+* Save data to file
+* Build a web interface with Streamlit
+* Add multiple user profiles
+* Improve prediction accuracy
+
+---
+
+## License
+
+Free to use and modify.
